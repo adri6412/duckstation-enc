@@ -25,16 +25,13 @@ jobs:
   linux-cross-appimage:
     name: 🐧 Linux Cross-Compiled AppImage
     uses: "./.github/workflows/linux-cross-appimage-build.yml"
-  linux-flatpak:
-    name: 📦 Linux Flatpak
-    uses: "./.github/workflows/linux-flatpak-build.yml"
   macos:
     name: 🍎 MacOS
     uses: "./.github/workflows/macos-build.yml"
 
   create-release:
     name: 📤 Create Release
-    needs: [linux-appimage, linux-cross-appimage, linux-flatpak, macos]
+    needs: [linux-appimage, linux-cross-appimage, macos]
     runs-on: ubuntu-22.04
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev'
     steps:
